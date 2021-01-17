@@ -2,7 +2,8 @@
 A simple chat messaging program using UNIX TCP sockets across a local network with several features.
 ## Usage
 1. Compile the respective programs. For e.g., using gcc:   
-```gcc deliver.c -lpthread -o deliver``` and ```gcc server.c -lpthread -o server``` 
+```gcc deliver.c -lpthread -o deliver``` and ```gcc server.c -lpthread -o server```  
+Ensure to compile using threads
 2. Get the current local IP . For e.g., using curl:  
 ```curl ifconfig.me```
 3. Run the compiled ```deliver``` and ```server``` programs on the same network  
@@ -10,12 +11,14 @@ Use the following syntax to run the programs:
 ```deliver``` and ```server <port number>```
 4. Login through ```deliver```  
 You can use these logins provided in ```server.c```  
-| User | Password |
-| ------------- | ------------- |
-| Yash | 000 |
-| James | 123 |
-| jim | 456 |
-| bob | 789 |
+
+|  User  |  Password |
+|-------|----------|
+|  Yash  |  000      |
+|  James |  123      |
+|  jim   |  456      |
+|  bob   |  789      | 
+
 5. Use the login command with the following syntax:  
 ```/login <User> <Password> <local IP/server address> <port>```  
 The server does not need any login and should be already running (see step 3)
@@ -27,8 +30,12 @@ The server does not need any login and should be already running (see step 3)
 * When a client logs in, a bind is created between the client and the server until the client disconnects
 * Client to client communication is passed through the server
 * Server manages input and distribution of chat messages
-* Console colours for ease of differentiating unique types of messages
 * Special commands and room creation
+* Server tracks created rooms and allocation of users in each room
+* Invite users to rooms with an invite
+* Change the colour of your name
+* Console colours for ease of differentiating unique types of messages
+* Multiple receive threads initiated as needed
 ```
 List of valid commands: 
  /help 
@@ -45,4 +52,5 @@ List of valid commands:
 ```
 
 ## Images
+An example of a text conference between 2 clients  
 ![Example Opening conference](/images/ExampleConference.png)
